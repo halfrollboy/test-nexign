@@ -1,4 +1,4 @@
-package greetings
+package spalling_test
 
 import (
 	"encoding/json"
