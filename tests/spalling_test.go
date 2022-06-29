@@ -11,11 +11,29 @@ import (
 )
 
 func TestSpelling(t *testing.T) {
+	//Получение данных из подготовленных файлов
 	data, test := getJson()
-	spelling.SpelingText(data)
-	for i, row := range test {
-		if data[i] != row {
-			t.Errorf("String does not match,with testing row")
+	testTable := []struct {
+		text   []string
+		result []string
+	}{
+		{
+			text:   data,
+			result: test,
+		},
+		{
+			text:   []string{"новая машына"},
+			result: []string{"новая машина"},
+		},
+	}
+
+	// data, test := getJson()
+	for _, val := range testTable {
+		spelling.SpelingText(val.text)
+		for i, rowResult := range val.result {
+			if val.text[i] != rowResult {
+				t.Errorf("String '%s' does not match,with testing row '%s'", val.text[i], rowResult)
+			}
 		}
 	}
 }
@@ -29,8 +47,8 @@ func BenchmarkSpelling(b *testing.B) {
 //Вспомогательная ф-ци которая берёт данные из файлов
 func getJson() ([]string, []string) {
 
-	jsonData, err := os.Open("data.json")
-	jsonTest, err := os.Open("test.json")
+	jsonData, err := os.Open("tests/test_data/data.json")
+	jsonTest, err := os.Open("tests/test_data/test.json")
 
 	if err != nil {
 		fmt.Println(err)
