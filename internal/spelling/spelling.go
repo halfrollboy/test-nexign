@@ -18,11 +18,13 @@ type YandexResponse struct {
 	S    []string `json:"s"`
 }
 
+// основная ф-ция проверки корректности
 func SpelingText(rows []string) {
 	errorWords := getJsons(formateText(rows))
 	findErrors(rows, errorWords)
 }
 
+//ф-ия получения данных из сервиса яндекса
 func getJsons(str string) [][]YandexResponse {
 	resp, err := http.Get("https://speller.yandex.net/services/spellservice.json/checkTexts?text=" + str)
 	if err != nil {
@@ -35,12 +37,14 @@ func getJsons(str string) [][]YandexResponse {
 	return targets
 }
 
+//форматирование строк для запроса
 func formateText(mass []string) string {
 	s := strings.Join(mass, "&text=")
 	s = strings.Replace(s, " ", "+", -1)
 	return s
 }
 
+//поиск и замена слов с ощибками
 func findErrors(rows []string, errMas [][]YandexResponse) {
 	for id, val := range errMas {
 		if len(val) == 0 {

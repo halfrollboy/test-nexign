@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/gin-contrib/pprof"
@@ -17,8 +16,6 @@ func LogMiddleware() gin.HandlerFunc {
 	defer logger.Sync()
 
 	return func(c *gin.Context) {
-		// c.Status()
-		fmt.Println(c.Writer.Status())
 		logger.Info("log to fetch URL",
 			// zap.String("code", code),
 			zap.Int("attempt", 3),
