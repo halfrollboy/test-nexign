@@ -9,7 +9,7 @@ info:
   title: Speller API
   version: "1.0"
 paths:
-  /letters:
+  /:
     post:
       consumes:
       - application/json
@@ -27,7 +27,11 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
         "400":
           description: Bad Request
           schema:
