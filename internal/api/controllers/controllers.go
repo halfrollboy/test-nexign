@@ -10,11 +10,17 @@ import (
 	"github.com/halfrollboy/test-nexign/internal/spelling"
 )
 
+type SpelingRequest struct {
+	texts map[string][]string
+}
+
 // GetLetters godoc
-// @Summary      Page with list of letters.
-// @Description  Fetch and returns page with list of letters.
-// @Accept       x-www-form-urlencoded
-// @Produce      html
+// Tags spelling
+// @Summary      Page with spalling
+// @Description  Fetch rows and spelling
+// @Accept       json
+// @Produce      json
+// @Param input body SpelingRequest true "tests for spelling"
 // @Success      200  {object}  string
 // @Failure      400  {object}  string
 // @Failure      422  {object}  string
@@ -35,5 +41,4 @@ func CheckCorrect(c *gin.Context) {
 	} else {
 		errors.New("Not valid json, need texts")
 	}
-
 }

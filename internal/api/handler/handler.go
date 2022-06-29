@@ -33,7 +33,7 @@ func NewRouter() *gin.Engine {
 	router := gin.Default()
 	router.Use(LogMiddleware())
 	pprof.Register(router)
-	router.POST("/", controllers.CheckCorrect)
 	router.GET("/swagger/*any", ginswagger.WrapHandler(swaggerFiles.Handler))
+	router.POST("/", controllers.CheckCorrect)
 	return router
 }
