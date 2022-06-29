@@ -1,0 +1,46 @@
+basePath: /
+definitions:
+  controllers.SpelingRequest:
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This service implements spalling texts.
+  title: Speller API
+  version: "1.0"
+paths:
+  /letters:
+    post:
+      consumes:
+      - application/json
+      description: Fetch rows and spelling
+      parameters:
+      - description: tests for spelling
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.SpelingRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "422":
+          description: Unprocessable Entity
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Page with spalling
+swagger: "2.0"
+x-extension-openapi:
+  example: value on a json format

@@ -5,8 +5,11 @@ import (
 
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
+	_ "github.com/halfrollboy/test-nexign/docs"
 	controllers "github.com/halfrollboy/test-nexign/internal/api/controllers"
 	uuid "github.com/satori/go.uuid"
+	swaggerFiles "github.com/swaggo/files"
+	ginswagger "github.com/swaggo/gin-swagger"
 	"go.uber.org/zap"
 )
 
@@ -30,9 +33,7 @@ func NewRouter() *gin.Engine {
 	router := gin.Default()
 	router.Use(LogMiddleware())
 	pprof.Register(router)
+	router.GET("/swagger/*any", ginswagger.WrapHandler(swaggerFiles.Handler))
 	router.POST("/", controllers.CheckCorrect)
-
-	// router.GET("/swagger/*any", swaggo.WrapHandler(swaggerFiles.Handler))
-
 	return router
 }
