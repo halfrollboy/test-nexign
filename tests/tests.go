@@ -10,8 +10,6 @@ import (
 	"github.com/halfrollboy/test-nexign/internal/spelling"
 )
 
-// TestHelloName calls greetings.Hello with a name, checking
-// for a valid return value.
 func TestSpelling(t *testing.T) {
 	data, test := getJson()
 	spelling.SpelingText(data)
@@ -37,8 +35,7 @@ func getJson() ([]string, []string) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println("Successfully Opened users.json")
-	// defer the closing of our jsonFile so that we can parse it later on
+
 	defer jsonData.Close()
 	defer jsonTest.Close()
 
