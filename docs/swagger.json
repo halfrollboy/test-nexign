@@ -1,0 +1,15 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This service implements spalling texts.",
+        "title": "Speller API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {},
+    "x-extension-openapi": {
+        "example": "value on a json format"
+    }
+}

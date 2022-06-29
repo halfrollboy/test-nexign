@@ -1,0 +1,11 @@
+basePath: /
+host: localhost:8080
+info:
+  contact: {}
+  description: This service implements spalling texts.
+  title: Speller API
+  version: "1.0"
+paths: {}
+swagger: "2.0"
+x-extension-openapi:
+  example: value on a json format
