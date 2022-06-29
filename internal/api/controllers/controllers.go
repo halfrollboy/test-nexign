@@ -11,7 +11,7 @@ import (
 )
 
 type SpelingRequest struct {
-	texts map[string][]string
+	Texts []string `json:"texts"`
 }
 
 // Summary Create
@@ -20,8 +20,8 @@ type SpelingRequest struct {
 // @Description  Fetch rows and spelling
 // @Accept       json
 // @Produce      json
-// @Param input body SpelingRequest true "tests for spelling"
-// @Success      200  {object}  map[string][]string
+// @Param texts body SpelingRequest true "tests for spelling"
+// @Success      200  {object}  string
 // @Failure      400  {object}  string
 // @Failure      422  {object}  string
 // @Failure      500  {object}  string

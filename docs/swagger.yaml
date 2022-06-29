@@ -1,6 +1,11 @@
 basePath: /
 definitions:
   controllers.SpelingRequest:
+    properties:
+      texts:
+        items:
+          type: string
+        type: array
     type: object
 host: localhost:8080
 info:
@@ -17,7 +22,7 @@ paths:
       parameters:
       - description: tests for spelling
         in: body
-        name: input
+        name: texts
         required: true
         schema:
           $ref: '#/definitions/controllers.SpelingRequest'
@@ -27,11 +32,7 @@ paths:
         "200":
           description: OK
           schema:
-            additionalProperties:
-              items:
-                type: string
-              type: array
-            type: object
+            type: string
         "400":
           description: Bad Request
           schema:

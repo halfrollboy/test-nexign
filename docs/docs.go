@@ -29,7 +29,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "tests for spelling",
-                        "name": "input",
+                        "name": "texts",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -41,13 +41,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                }
-                            }
+                            "type": "string"
                         }
                     },
                     "400": {
@@ -74,7 +68,15 @@ const docTemplate = `{
     },
     "definitions": {
         "controllers.SpelingRequest": {
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "texts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
         }
     },
     "x-extension-openapi": {
